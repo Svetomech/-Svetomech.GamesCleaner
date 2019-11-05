@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UserSecretsId>dotnet-Svetomech.GamesCleaner-9FFAC14D-BC1F-420E-8E1A-A9C760CACB14</UserSecretsId>
+    
+    <Configuration Condition=" '$(Configuration)' == 'Debug'">Debug</Configuration>
+    <Configuration Condition=" '$(Configuration)' == 'Release'">Release</Configuration>
+
+    <OutputType Condition=" '$(Configuration)' == 'Release'">Exe</OutputType>
+    <SelfContained Condition=" '$(Configuration)' == 'Release'">true</SelfContained>
+
+    <PublishSingleFile Condition=" '$(Configuration)' == 'Release'">true</PublishSingleFile>
+    <PublishTrimmed Condition=" '$(Configuration)' == 'Release'">true</PublishTrimmed>
+    <PublishReadyToRun Condition=" '$(Configuration)' == 'Release'">true</PublishReadyToRun>
+    <RuntimeIdentifier Condition=" '$(Configuration)' == 'Release'">win10-x64</RuntimeIdentifier>
+
+    <EnableDefaultContentItems>false</EnableDefaultContentItems>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(Configuration)' == 'Release'">
+    <PublishReadyToRunExclude Include="System.Security.Principal.Windows.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile> 
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.0.0" />
+  </ItemGroup>
+</Project>
