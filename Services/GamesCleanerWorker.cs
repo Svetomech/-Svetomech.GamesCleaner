@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -72,8 +71,9 @@ namespace Svetomech.GamesCleaner.Services
                 }
             }
 
-            _logger.LogInformation("Finished! Press any key to exit");
-            Console.ReadKey();
+            _logger.LogInformation("Finished!");
+
+            // Environment.Exit(0);
             Process.GetCurrentProcess().Kill();
 
             return Task.CompletedTask;

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UserSecretsId>dotnet-Svetomech.GamesCleaner-9FFAC14D-BC1F-420E-8E1A-A9C760CACB14</UserSecretsId>
-    
+
     <Configuration Condition=" '$(Configuration)' == 'Debug'">Debug</Configuration>
     <Configuration Condition=" '$(Configuration)' == 'Release'">Release</Configuration>
 
@@ -14,23 +14,41 @@
     <PublishTrimmed Condition=" '$(Configuration)' == 'Release'">true</PublishTrimmed>
     <PublishReadyToRun Condition=" '$(Configuration)' == 'Release'">true</PublishReadyToRun>
     <RuntimeIdentifier Condition=" '$(Configuration)' == 'Release'">win10-x64</RuntimeIdentifier>
-
+    
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(Configuration)' == 'Release'">
-    <PublishReadyToRunExclude Include="System.Security.Principal.Windows.dll" />
+    <PublishReadyToRunExclude Include="System.Security.Principal.Windows.dll"/>
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile> 
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Content Include="install.cmd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Content Include="uninstall.cmd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="3.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.0.0"/>
+    <PackageReference Include="Serilog.AspNetCore" Version="3.1.0"/>
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0"/>
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1"/>
+    <PackageReference Include="Serilog.Sinks.File" Version="4.1.0"/>
+    <PackageReference Include="Serilog.Enrichers.Environment" Version="2.1.3"/>
   </ItemGroup>
+
 </Project>
